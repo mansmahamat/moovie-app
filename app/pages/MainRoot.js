@@ -12,11 +12,21 @@ import Home from "./Home";
 import Settings from "./Settings";
 import Favourites from "./Favourites";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
+import * as SQLite from 'expo-sqlite';
 
-const Tab = createBottomTabNavigator();
+
+
+
 
 export default function MainRoot() {
- 
+ const Tab = createBottomTabNavigator();
+const db = SQLite.openDatabase('movie.db');
+
+  db.transaction((tx) => {
+    tx.executeSql(
+      "CREATE TABLE IF NOT EXISTS Favorites (id INTEGER PRIMARY KEY AUTOINCREMENT, movie_id INT, title TEXT, genres TEXT, overview TEXT, popularity TEXT, release_date TEXT, vote_average TEXT, vote_count TEXT, poster TEXT, backdrop TEXT);"
+    );
+  });
 
 
  

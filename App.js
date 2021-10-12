@@ -6,12 +6,17 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import MainRoot from './app/pages/MainRoot';
 import MovieDetail from './app/pages/MovieDetail';
+import SerieDetail from './app/pages/SerieDetail';
+import {Provider} from 'react-redux';
+import {store} from './app/redux/store'
+
 
 const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <NavigationContainer>
+    <Provider store={store}>
+ <NavigationContainer>
     <Stack.Navigator  screenOptions={{ headerShown:false, }} >
       <Stack.Screen
         name="MainRoot"
@@ -23,8 +28,15 @@ export default function App() {
         component={MovieDetail}
         options={{ title: 'MovieDetail' }}
       />
+      <Stack.Screen
+        name="SerieDetail"
+        component={SerieDetail}
+        options={{ title: 'SerieDetail' }}
+      />
     </Stack.Navigator>
   </NavigationContainer>
+    </Provider>
+   
   );
 }
 

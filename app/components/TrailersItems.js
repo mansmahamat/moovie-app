@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, StyleSheet, Image, Dimensions } from "react-native";
+import { View, Text, StyleSheet, Image, Dimensions, TouchableWithoutFeedback } from "react-native";
 
 const deviceWidth = Dimensions.get("window").width;
 const imageWidth = (deviceWidth - 60) / 2;
@@ -7,7 +7,8 @@ const leftPlay = (imageWidth- 44) / 2;
 
 export default function TrailersItems(props) {
   return (
-    <View style={{ marginRight: 3 }}>
+    <TouchableWithoutFeedback onPress={() => props.setModalVisible(true)}>
+      <View style={{ marginRight: 3 }}>
       <Image
         style={{
           position: "absolute",
@@ -28,6 +29,8 @@ export default function TrailersItems(props) {
       />
       <Text style={{ flexWrap: "wrap", width: 171 }}>{props.item.name}</Text>
     </View>
+    </TouchableWithoutFeedback>
+    
   );
 }
 

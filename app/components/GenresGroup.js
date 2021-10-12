@@ -7,8 +7,8 @@ export default function GenresGroup({data}) {
                 {data.map((item, index) => {
                     return (
                         <View style={styles.genresItem} key={index} >
-                            <Text style={{color: "white", fontSize: 15}}>
-                                {item}
+                            <Text style={{ fontSize: 15}}>
+                                {item.name}
                             </Text>
                         </View>
                     ) 
@@ -29,9 +29,11 @@ const styles = StyleSheet.create({
         alignItems: "center",
         paddingHorizontal: 10,
         paddingVertical: 5,
-        backgroundColor: "#333",
+        
         marginRight: 10,
         marginBottom: 5,
         borderRadius: 19,
+        borderWidth: 1,
+        borderColor: "red"
     }
 })
